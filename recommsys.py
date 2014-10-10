@@ -18,8 +18,7 @@ mysql_cn= MySQLdb.connect(host='localhost',
 df= psql.read_sql('select distinct beer_name,review_overall, \
 review_aroma,review_appearance,review_palate,review_taste,\
 review_profilename from review_test;', con=mysql_cn) 
-'''df= psql.read_sql('select distinct beer_name,review_overall,\
-review_profilename,beer_style from review_test;', con=mysql_cn)  '''  
+
 
 beer_1, beer_2 = "Amstel Light", "American Pale Ale"
 
@@ -32,8 +31,8 @@ def get_beer_reviews(beer, common_users):
     reviews = df[mask].sort('review_profilename')
     reviews = reviews[reviews.review_profilename.duplicated()==False]
     return reviews
-beer_1_reviews = get_beer_reviews(beer_1, common_reviewers)
-beer_2_reviews = get_beer_reviews(beer_2, common_reviewers)
+'''beer_1_reviews = get_beer_reviews(beer_1, common_reviewers)
+beer_2_reviews = get_beer_reviews(beer_2, common_reviewers)'''
 
 from scipy.stats.stats import pearsonr
 
